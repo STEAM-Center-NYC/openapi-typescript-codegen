@@ -7,7 +7,7 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): P
 
         try {
             // Do your request...
-            const timeout = setTimeout(() => {
+            setTimeout(() => {
                 resolve({
                     url,
                     ok: true,
@@ -18,7 +18,6 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): P
                     },
                 });
             }, 500);
-
         } catch (e) {
             reject(e);
         }
