@@ -1,11 +1,5 @@
 # OpenAPI Typescript Codegen
 
-[![NPM][npm-image]][npm-url]
-[![License][license-image]][license-url]
-[![Coverage][coverage-image]][coverage-url]
-[![Coverage][coverage-image]][coverage-url]
-[![Downloads][downloads-image]][downloads-url]
-[![Build][build-image]][build-url]
 
 > Node.js library that generates Typescript clients based on the OpenAPI specification.
 
@@ -18,8 +12,8 @@
 - Supports JSON and YAML files for input
 - Supports generation through CLI, Node.js and NPX
 - Supports tsc and @babel/plugin-transform-typescript
-- Supports aborting of requests (cancelable promise pattern)
 - Supports external references using [json-schema-ref-parser](https://github.com/APIDevTools/json-schema-ref-parser/)
+- Removed `CancellablePromise` code to better work with native async/await
 
 ## Install
 
@@ -84,7 +78,6 @@ Documentation
 - [Nullable props (OpenAPI v2)](docs/nullable-props.md)
 - [Authorization](docs/authorization.md)
 - [External references](docs/external-references.md)
-- [Canceling requests](docs/canceling-requests.md)
 - [Custom request file](docs/custom-request-file.md)
 
 Support
@@ -93,14 +86,3 @@ Support
 - [Axios support](docs/axios-support.md)
 - [Angular support](docs/angular-support.md)
 - [Node-Fetch support](docs/node-fetch-support.md)
-
-[npm-url]: https://npmjs.org/package/openapi-typescript-codegen
-[npm-image]: https://img.shields.io/npm/v/openapi-typescript-codegen.svg
-[license-url]: LICENSE
-[license-image]: http://img.shields.io/npm/l/openapi-typescript-codegen.svg
-[coverage-url]: https://codecov.io/gh/ferdikoomen/openapi-typescript-codegen
-[coverage-image]: https://img.shields.io/codecov/c/github/ferdikoomen/openapi-typescript-codegen.svg
-[downloads-url]: http://npm-stat.com/charts.html?package=openapi-typescript-codegen
-[downloads-image]: http://img.shields.io/npm/dm/openapi-typescript-codegen.svg
-[build-url]: https://circleci.com/gh/ferdikoomen/openapi-typescript-codegen/tree/master
-[build-image]: https://circleci.com/gh/ferdikoomen/openapi-typescript-codegen/tree/master.svg?style=svg
