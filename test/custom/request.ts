@@ -1,9 +1,8 @@
 import type { ApiRequestOptions } from './ApiRequestOptions';
-import { CancelablePromise } from './CancelablePromise';
 import type { OpenAPIConfig } from './OpenAPI';
 
-export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): CancelablePromise<T> => {
-    return new CancelablePromise((resolve, reject, onCancel) => {
+export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): Promise<T> => {
+    return new Promise((resolve, reject) => {
         const url = `${config.BASE}${options.path}`.replace('{api-version}', config.VERSION);
 
         try {
@@ -20,10 +19,6 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
                 });
             }, 500);
 
-            // Cancel your request...
-            onCancel(() => {
-                clearTimeout(timeout);
-            });
         } catch (e) {
             reject(e);
         }

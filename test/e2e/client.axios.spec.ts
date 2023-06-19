@@ -68,22 +68,6 @@ describe('client.axios', () => {
         expect(result).toBeDefined();
     });
 
-    it('can abort the request', async () => {
-        let error;
-        try {
-            const { ApiClient } = require('./generated/client/axios/index.js');
-            const client = new ApiClient();
-            const promise = client.simple.getCallWithoutParametersAndResponse();
-            setTimeout(() => {
-                promise.cancel();
-            }, 10);
-            await promise;
-        } catch (e) {
-            error = (e as Error).message;
-        }
-        expect(error).toContain('Request aborted');
-    });
-
     it('should throw known error (500)', async () => {
         let error;
         try {

@@ -4,8 +4,7 @@ export const sendRequest = async (
 	url: string,
 	body: any,
 	formData: FormData | undefined,
-	headers: Headers,
-	onCancel: OnCancel
+	headers: Headers
 ): Promise<Response> => {
 	const controller = new AbortController();
 
@@ -19,8 +18,6 @@ export const sendRequest = async (
 	if (config.WITH_CREDENTIALS) {
 		request.credentials = config.CREDENTIALS;
 	}
-
-	onCancel(() => controller.abort());
 
 	return await fetch(url, request);
 };

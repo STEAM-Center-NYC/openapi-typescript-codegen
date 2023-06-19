@@ -3,8 +3,7 @@ export const sendRequest = async (
 	url: string,
 	body: any,
 	formData: FormData | undefined,
-	headers: Headers,
-	onCancel: OnCancel
+	headers: Headers
 ): Promise<Response> => {
 	const controller = new AbortController();
 
@@ -14,8 +13,6 @@ export const sendRequest = async (
 		body: body ?? formData,
 		signal: controller.signal as AbortSignal,
 	};
-
-	onCancel(() => controller.abort());
 
 	return await fetch(url, request);
 };

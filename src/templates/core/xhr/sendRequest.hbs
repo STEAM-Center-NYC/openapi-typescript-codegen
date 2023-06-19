@@ -4,8 +4,7 @@ export const sendRequest = async (
 	url: string,
 	body: any,
 	formData: FormData | undefined,
-	headers: Headers,
-	onCancel: OnCancel
+	headers: Headers
 ): Promise<XMLHttpRequest> => {
 	const xhr = new XMLHttpRequest();
 	xhr.open(options.method, url, true);
@@ -20,7 +19,5 @@ export const sendRequest = async (
 		xhr.onabort = () => reject(new Error('Request aborted'));
 		xhr.onerror = () => reject(new Error('Network error'));
 		xhr.send(body ?? formData);
-
-		onCancel(() => xhr.abort());
 	});
 };
